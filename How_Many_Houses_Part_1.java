@@ -27,9 +27,8 @@ For example:
 ^>v< now delivers presents to 3 houses, and Santa and Robo-Santa end up back where they started.
 ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.*/
 
-import java.util.Arrays;
 
-public class How_Many_Houses {
+public class How_Many_Houses_Part_1 {
 
     public static int[][] santaTrip(String string1, int length1, int[][] map1){
         int x = 0;
@@ -62,61 +61,6 @@ public class How_Many_Houses {
         
     }
 
-    public static int[][] roboSantaTrip(String string2, int length2, int[][] map2){
-        int a = 0;
-        int y = 1;
-        int i = length2;
-        int j = length2;
-        while (a < length2){
-            map2[i][j] = 1;
-            //System.out.println("Santa: " + a +", "+ i + ", " + j);
-                if(string2.charAt(a) == '^'){
-                    i--;
-                    map2[i][j]++;
-                    a = a + 2;
-                }else if(string2.charAt(a) == '>'){
-                    j++;
-                    map2[i][j]++;
-                    a = a + 2;
-                }else if(string2.charAt(a) == '<'){
-                    j--;
-                    map2[i][j]++;
-                    a = a + 2;
-                }else if(string2.charAt(a) == 'v'){
-                    i++;
-                    map2[i][j]++;
-                    a = a + 2;
-                }
-                //System.out.println(a +", "+ i + ", " + j);
-            }
-            i = length2;
-            j = length2;
-            while (y < length2){
-                map2[i][j] = 2;
-                //System.out.println("Robo: " + y+", "+ i + ", " + j);
-                if(string2.charAt(y) == '^'){
-                    i--;
-                    map2[i][j] = 1;
-                    y = y + 2;
-                }else if(string2.charAt(y) == '>'){
-                    j++;
-                    map2[i][j] = 1;
-                    y = y + 2;
-                }else if(string2.charAt(y) == '<'){
-                    j--;
-                    map2[i][j] = 1;
-                    y = y + 2;
-                }else if(string2.charAt(y) == 'v'){
-                    i++;
-                    map2[i][j] = 1;
-                    y = y + 2;
-                }
-                //System.out.println(y+", "+ i + ", " + j);
-            }
-            return map2;
-        
-    }
-
     public static int mapCounter(int[][] map){
         int z = 0;
         for(int row = 0; row < map.length; row++){
@@ -136,10 +80,6 @@ public class How_Many_Houses {
         int length = directions.length();
         int[][] arr = new int[2*length][2*length];
         int[][] santa = santaTrip(directions,length,arr);
-        //int[][] robo = roboSantaTrip(directions,length,arr);
         System.out.println(mapCounter(santa));
-        //System.out.println(mapCounter(robo));
-
-
     }
 }
